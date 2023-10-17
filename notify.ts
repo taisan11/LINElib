@@ -7,7 +7,7 @@ const url = "https://notify-api.line.me/api/notify";
  * @param {string} token - lineNotifyのトークンを指定する。
  * @param {string} imageThumbnailURL - 画像のサムネイルURLを指定する。240×240px/JPEG
  * @param {string} imageFullsizeURL - 画像のフルサイズURLを指定する。2048×2048px/JPEG
- * @return {string} - [Hello + name]という形式で戻る。
+ * @return {string} - lineNotifyのレスポンスを返す。
  */
 export async function lineNotify(
   params: {
