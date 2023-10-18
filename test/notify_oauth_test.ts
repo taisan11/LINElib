@@ -4,9 +4,9 @@ import { Log } from "https://pax.deno.dev/kawarimidoll/deno-tl-log";
 import { clientid, clientsecret, redirect_uri } from "./env.ts";
 
 const log = new Log();
-log.info("a",clientid);
-log.info("a",clientsecret);
-log.info("a",redirect_uri);
+log.info("a", clientid);
+log.info("a", clientsecret);
+log.info("a", redirect_uri);
 
 const Aaa = lineNotifyoAuth({
   clientid: clientid,

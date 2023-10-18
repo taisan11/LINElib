@@ -4,7 +4,7 @@ import { open } from "https://deno.land/x/open@v0.0.6/index.ts";
 const log = new Log();
 
 /**
- * send to lineNotify
+ * lineNotifyoAuthCodeGenerate
  * @module lineNotifyoAuth
  * @param {string} clientid - clientidを設定
  * @param {string} clientsecret - clientsecretを設定
@@ -26,7 +26,8 @@ export async function lineNotifyoAuth(
     const errorMessage = "Required fields are missing.";
     log.error(errorMessage);
   }
-  const url =`https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
+  const url =
+    `https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
   log.info(url);
   try {
     await open(url);
