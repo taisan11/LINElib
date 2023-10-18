@@ -1,4 +1,4 @@
-// import ky from "https://cdn.skypack.dev/ky?dts";
+import ky from "https://cdn.skypack.dev/ky?dts";
 import { Log } from "https://pax.deno.dev/kawarimidoll/deno-tl-log";
 import { open } from "https://deno.land/x/open@v0.0.6/index.ts";
 const log = new Log();
@@ -32,6 +32,33 @@ export async function lineNotifyoAuth(
   try {
     await open(url);
     return "success?";
+  } catch (error) {
+    log.error(`${error}`);
+    return error;
+    // return await error.response.json();
+  }
+}
+
+//POST https://notify-bot.line.me/oauth/token?grant_type=authorization_code&
+export async function lineNotifyToken(
+  params: {
+    clientid: string;
+    clientsecret: string;
+    redirect_uri: string;
+    code: string;
+  },
+) {
+  const { clientid, clientsecret, redirect_uri, code } = params;
+  // check
+  if (!clientid || !clientsecret || !redirect_uri || !code) {
+    const errorMessage = "Required fields are missing.";
+    log.error(errorMessage);
+  }
+  const url =
+    `https://notify-bot.line.me/oauth/token?grant_type=authorization_code&code=${code}&redirect_uri=${redirect_uri}&client_id=${clientid}&client_secret=${clientsecret}`;
+  log.info(url);
+  try {
+    return await ky.post(url).json();
   } catch (error) {
     log.error(`${error}`);
     return error;

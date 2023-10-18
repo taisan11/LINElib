@@ -3,6 +3,7 @@ const {
   clientid,
   clientsecret,
   redirect_uri,
+  code,
 } = Deno.env.toObject();
 
-export { clientid, clientsecret, redirect_uri };
+export { clientid, clientsecret, code, redirect_uri };
