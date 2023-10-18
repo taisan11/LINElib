@@ -21,13 +21,13 @@ export async function lineNotifyoAuth(
   },
 ) {
   const { clientid, redirect_uri, state, clientsecret } = params;
-  // 内容とトークンcheck
+  // check
   if (!clientid || !redirect_uri || !state || !clientsecret) {
-    log.error("Required fields are missing.");
-    throw new Error("Required fields are missing.");
+    const errorMessage = "Required fields are missing.";
+    log.error(errorMessage);
   }
-  const url =
-    `https://notify-bot.line.me/oauth/authorize?=response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
+  const url =`https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
+  log.info(url);
   try {
     await open(url);
     return "success?";
