@@ -45,6 +45,6 @@ export async function lineNotify(
   } catch (error) {
     console.error(`${error}`);
     return error;
-    return await error.response.json();
+    // return await error.response.json();
   }
 }

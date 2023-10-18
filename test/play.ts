@@ -7,6 +7,5 @@ log.info("OK");
 // https://fair-swan-75.deno.dev/?code=XXX&state=NO_STATEの形で返される
 // const url: string = "https://notify-bot.line.me/oauth/token?grant_type=authorization_code&code=XXX&redirect_uri=XXX&client_id=XXXX&client_secret=XXXX"
 log.info(
-  ky.post("https://example.com"
-  ).json(),
+  ky.post("https://example.com").json(),
 );
