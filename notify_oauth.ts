@@ -1,6 +1,5 @@
 import ky from "https://cdn.skypack.dev/ky?dts";
 import { Log } from "https://pax.deno.dev/kawarimidoll/deno-tl-log";
-import { open } from "https://deno.land/x/open@v0.0.6/index.ts";
 const log = new Log();
 
 /**
@@ -10,9 +9,9 @@ const log = new Log();
  * @param {string} clientsecret - clientsecretを設定
  * @param {string} redirect_uri - redirect_uriを設定
  * @param {string} state - stateを設定
- * @return {string} - success?を返す
+ * @return {string} - URLを返すブラウザなどでログインしcodeを取得してください
  */
-export async function lineNotifyoAuth(
+export function lineNotifyoAuth(
   params: {
     clientid: string;
     clientsecret: string;
@@ -25,18 +24,12 @@ export async function lineNotifyoAuth(
   if (!clientid || !redirect_uri || !state || !clientsecret) {
     const errorMessage = "Required fields are missing.";
     log.error(errorMessage);
+    return errorMessage;
   }
   const url =
     `https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
   log.info(url);
-  try {
-    await open(url);
-    return "success?";
-  } catch (error) {
-    log.error(`${error}`);
-    return error;
-    // return await error.response.json();
-  }
+    return url;
 }
 
 //POST https://notify-bot.line.me/oauth/token?grant_type=authorization_code&
