@@ -29,7 +29,7 @@ export function lineNotifyoAuth(
   const url =
     `https://notify-bot.line.me/oauth/authorize?response_type=code&client_id=${clientid}&redirect_uri=${redirect_uri}&scope=notify&state=${state}`;
   log.info(url);
-    return url;
+  return url;
 }
 
 //POST https://notify-bot.line.me/oauth/token?grant_type=authorization_code&

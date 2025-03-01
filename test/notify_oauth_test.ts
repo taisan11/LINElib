@@ -19,7 +19,9 @@ await open(Aaa);
 
 //codeの読み込み
 console.log("%cコードを取得してください%cやり方は下をどうぞ", "color:red");
-console.log("Please enter the value of the 'code' parameter in the URL, which should be in the format '?code=xxxx'.");
+console.log(
+  "Please enter the value of the 'code' parameter in the URL, which should be in the format '?code=xxxx'.",
+);
 const code = prompt("Please enter your code:");
 console.log("code:", code);
 if (code !== null) {
